@@ -68,7 +68,6 @@ export default class StarRating extends Component {
     throw new Error(
       `Rating must be between ${minRating} and ${maxRating} (${rating}).`
     )
-    return false
   }
 
   render() {
@@ -79,7 +78,7 @@ export default class StarRating extends Component {
         ? Array(fullStars)
             .fill(null)
             .map((item, i) => {
-              return <FontAwesomeIcon key={`fs${i}`} icon="star" />
+              return <FontAwesomeIcon className="star" key={`fs${i}`} icon="star" />
             })
         : ''
     }
@@ -90,7 +89,7 @@ export default class StarRating extends Component {
             .fill(null)
             .map((item, i) => {
               return (
-                <span key={`hs${i}`} className="fa-layers fa-fw">
+                <span key={`hs${i}`} className="fa-layers fa-fw star">
                   <FontAwesomeIcon icon="star-half" />
                   <FontAwesomeIcon icon={['far', 'star-half']} flip="horizontal"/>
                 </span>
@@ -104,7 +103,7 @@ export default class StarRating extends Component {
         ? Array(emptyStars)
           .fill(null)
           .map((item, i) => {
-            return <FontAwesomeIcon key={`es${i}`} icon={['far', 'star']} />
+            return <FontAwesomeIcon className="star" key={`es${i}`} icon={['far', 'star']} />
           })
         : ''
     }
