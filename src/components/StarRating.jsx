@@ -4,6 +4,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 export default class StarRating extends Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       ...props,
       maxStars: this.maxStars(),
@@ -18,6 +19,18 @@ export default class StarRating extends Component {
     maxRating: 10,
     rating: 5,
     starRatio: 2
+  }
+
+  componentWillMount() {
+    this.ratingIsValid()
+  }
+
+  componentWillUpdate() {
+    this.ratingIsValid()
+  }
+
+  componentWillReceiveProps() {
+    this.ratingIsValid()
   }
 
   fullStars() {
@@ -43,6 +56,19 @@ export default class StarRating extends Component {
   maxStars() {
     let { maxRating, starRatio } = this.props
     return Math.floor(maxRating / starRatio)
+  }
+
+  ratingIsValid() {
+    let { rating, minRating, maxRating } = this.props
+    
+    if (rating >= minRating && rating <= maxRating) {
+      return true
+    }
+
+    throw new Error(
+      `Rating must be between ${minRating} and ${maxRating} (${rating}).`
+    )
+    return false
   }
 
   render() {
