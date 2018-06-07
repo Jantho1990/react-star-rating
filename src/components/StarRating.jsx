@@ -46,19 +46,7 @@ export default class StarRating extends Component {
   }
 
   render() {
-    let { rating, starRatio, fullStars, halfStars, emptyStars } = this.state
-
-    let renderStars = (stars, component, key) => {
-      if (stars.length === 0) return ''
-      let ret = []
-      for (let i = 0; i < stars; i++) {
-        /* ret.push(() => {
-          component.key = `${key}${i}`
-          return component
-         } />) */
-      }
-      return ret
-    }
+    let { fullStars, halfStars, emptyStars } = this.state
 
     let renderFullStars = () => {
       return fullStars !== 0
