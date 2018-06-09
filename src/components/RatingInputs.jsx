@@ -33,10 +33,14 @@ export default class RatingInputs extends Component {
     let { rating, minRating, maxRating, starRatio } = this.props
     return (
       <div className="rating-inputs">
-        <input type="range" ref="rating" value={rating} min={minRating} max={maxRating} onChange={this.handleRating}/>
-        <input type="number" ref="minRating" value={minRating} onChange={this.handleRating}/>
-        <input type="number" ref="maxRating" value={maxRating} onChange={this.handleRating}/>
-        <input type="number" ref="starRatio" value={starRatio} onChange={this.handleRating}/>
+        <label htmlFor="rating">Rating</label>
+        <input type="range" ref="rating" name="rating" value={rating} min={minRating} max={maxRating} onChange={this.handleRating}/>
+        <label htmlFor="minRating">Min Rating</label>
+        <input type="number" ref="minRating" name="minRating" value={minRating} onChange={this.handleRating}/>
+        <label htmlFor="maxRating">Max Rating</label>
+        <input type="number" ref="maxRating" name="maxRating" value={maxRating} onChange={this.handleRating}/>
+        <label htmlFor="starRatio">Star Ratio</label>
+        <input type="number" ref="starRatio" name="starRatio" value={starRatio} onChange={this.handleRating}/>
       </div>
     )
   }

@@ -30,16 +30,16 @@ export default class StarRating extends Component {
   }
 
   emptyStars() {
-    let { rating, starRatio } = this.props
+    let { rating, minRating, starRatio } = this.props
     let maxStars = this.maxStars()
-    let x = rating % starRatio
-    let y = maxStars - rating / starRatio
-    return (1 / 2) * starRatio > x ? Math.ceil(y) : Math.floor(y)
+    let x = (rating - minRating) % starRatio
+    let y = maxStars - (rating - minRating) / starRatio
+    return (1 / 2) * starRatio >= x ? Math.ceil(y) : Math.floor(y)
   }
 
   maxStars() {
-    let { maxRating, starRatio } = this.props
-    return Math.floor(maxRating / starRatio)
+    let { minRating, maxRating, starRatio } = this.props
+    return Math.floor((maxRating - minRating) / starRatio)
   }
 
   render() {

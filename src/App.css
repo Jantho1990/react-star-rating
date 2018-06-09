@@ -23,6 +23,17 @@ h1 {
 
 .rating-inputs {
   grid-area: input;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.rating-inputs input {
+  margin: auto;
+}
+
+.rating-inputs label {
+  margin: auto 0;
 }
 
 .App-logo {
