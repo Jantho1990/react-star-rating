@@ -34,7 +34,7 @@ export default class RatingInputs extends Component {
     return (
       <div className="rating-inputs">
         <label htmlFor="rating">Rating</label>
-        <input type="range" ref="rating" name="rating" value={rating} min={minRating} max={maxRating} onChange={this.handleRating}/>
+        <input type="number" ref="rating" name="rating" value={rating} min={minRating} max={maxRating} onChange={this.handleRating}/>
         <label htmlFor="minRating">Min Rating</label>
         <input type="number" ref="minRating" name="minRating" value={minRating} onChange={this.handleRating}/>
         <label htmlFor="maxRating">Max Rating</label>
