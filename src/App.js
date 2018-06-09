@@ -34,13 +34,16 @@ class App extends Component {
     let {rating, minRating, maxRating, starRatio} = this.state
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
-        <StarRating
-          rating={rating}
-          minRating={minRating}
-          maxRating={maxRating}
-          starRatio={starRatio}
-        />
+        <h1>React StarRating</h1>
+        <div className="star-rating-container">
+          <img src={logo} className="App-logo" alt="logo" />
+          <StarRating
+            rating={rating}
+            minRating={minRating}
+            maxRating={maxRating}
+            starRatio={starRatio}
+          />
+        </div>
         <RatingInputs
           rating = {rating}
           minRating = {minRating}

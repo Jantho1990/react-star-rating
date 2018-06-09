@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ratingIsValid } from '../lib/lib'
+import inputIsValid from '../lib/validate'
 
 export default class RatingInputs extends Component {
   constructor() {
@@ -19,8 +19,13 @@ export default class RatingInputs extends Component {
     let maxRating = Number(this.refs.maxRating.value)
     let starRatio = Number(this.refs.starRatio.value)
 
-    if (ratingIsValid(rating, minRating, maxRating)) {
-      this.props.onStarRatingsUpdate({ rating, minRating, maxRating, starRatio })
+    if (inputIsValid(rating, minRating, maxRating, starRatio)) {
+      this.props.onStarRatingsUpdate({
+        rating,
+        minRating,
+        maxRating,
+        starRatio
+      })
     }
   }
 

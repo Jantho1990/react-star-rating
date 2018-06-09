@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ratingIsValid } from '../lib/lib'
+import inputIsValid from '../lib/validate'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export default class StarRating extends Component {
@@ -11,11 +11,9 @@ export default class StarRating extends Component {
   }
 
   componentWillMount() {
-    let { rating, minRating, maxRating } = this.props
-    if (!ratingIsValid(rating, minRating, maxRating)) {
-      throw new Error(
-        `Rating must be between ${minRating} and ${maxRating} (${rating}).`
-      )
+    let { rating, minRating, maxRating, starRatio } = this.props
+    if (!inputIsValid(rating, minRating, maxRating, starRatio)) {
+      throw new Error(`Rating must be between ${minRating} and ${maxRating} (${rating}).`)
     }
   }
 

@@ -1,25 +1,33 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  grid-template-areas:
+    "title title"
+    "rating input";
+  max-width: 1080px;
+  margin: auto;
+}
+
+h1, .star-rating-container, .rating-inputs {
+  margin: auto;
+}
+
+h1 {
+  grid-area: title;
+}
+
+.star-rating-container {
+  grid-area: rating;
+}
+
+.rating-inputs {
+  grid-area: input;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 .App .star {
