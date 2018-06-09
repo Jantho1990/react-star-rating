@@ -5,7 +5,7 @@
   grid-template-areas:
     "title title"
     "rating input";
-  max-width: 1080px;
+  max-width: 768px;
   margin: auto;
 }
 
