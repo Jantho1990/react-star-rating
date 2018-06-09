@@ -1,12 +1,15 @@
 .App {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
   grid-template-areas:
-    "title title"
-    "rating input";
-  max-width: 768px;
+    "title"
+    "rating"
+    "input";
+  max-width: 100%;
   margin: auto;
+  grid-gap: 1em;
+  text-align: center;
 }
 
 h1, .star-rating-container, .rating-inputs {
@@ -30,6 +33,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 1fr;
+  text-align: left;
 }
 
 .rating-inputs input {
@@ -54,4 +58,15 @@ h1 {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media screen and (min-width: 768px) {
+  .App {
+    max-width: 768px;
+    grid-gap: 0;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "title title"
+      "rating input";
+  }
 }
