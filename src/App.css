@@ -19,6 +19,10 @@ h1 {
 
 .star-rating-container {
   grid-area: rating;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .rating-inputs {
