@@ -18,7 +18,8 @@ class App extends Component {
       rating: 5,
       minRating: 0,
       maxRating: 10,
-      starRatio: 2
+      starRatio: 2,
+      hardLimit: 1000
     }
     this.handleStarRatingsUpdate = this.handleStarRatingsUpdate.bind(this)
   }
@@ -31,7 +32,7 @@ class App extends Component {
   }
   
   render() {
-    let {rating, minRating, maxRating, starRatio} = this.state
+    let {rating, minRating, maxRating, starRatio, hardLimit} = this.state
     return (
       <div className="App">
         <h1>React StarRating</h1>
@@ -42,6 +43,7 @@ class App extends Component {
             minRating={minRating}
             maxRating={maxRating}
             starRatio={starRatio}
+            limit={hardLimit}
           />
         </div>
         <RatingInputs
@@ -49,6 +51,7 @@ class App extends Component {
           minRating = {minRating}
           maxRating = {maxRating}
           starRatio = {starRatio}
+          limit = {hardLimit}
           onStarRatingsUpdate = {this.handleStarRatingsUpdate}
           />
       </div>

@@ -6,26 +6,29 @@ export let ratingIsValid = function(rating, minRating, maxRating) {
 export let valuesNotZeroOrLess = function(...values) {
   let filteredValues = values.filter(value => value > 0)
 
-  if (values.length === filteredValues.length) return true
-
-  return false
+  return values.length === filteredValues.length
 }
 
 export let valuesNotNegative = function(...values) {
   let filteredValues = values.filter(value => value >= 0)
   
-  if (values.length === filteredValues.length) return true
-  
-  return false
+  return values.length === filteredValues.length
 }
 
 export let minLessThanMax = function(minRating, maxRating) {
   return minRating < maxRating
 }
 
-export default function (rating, minRating, maxRating, starRatio) {
-  return ratingIsValid(rating, minRating, maxRating)
+export let valuesLessThanHardLimit = function(limit, ...values) {
+  let filteredValues = values.filter(value => value <= limit)
+
+  return values.length === filteredValues.length
+}
+
+export default function (rating, minRating, maxRating, starRatio, limit) {
+  return valuesLessThanHardLimit(limit, minRating, maxRating) 
     && valuesNotNegative(rating, minRating, maxRating)
     && valuesNotZeroOrLess(starRatio)
     && minLessThanMax(minRating, maxRating)
+    && ratingIsValid(rating, minRating, maxRating)
 }

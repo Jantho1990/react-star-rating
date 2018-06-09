@@ -7,12 +7,13 @@ export default class StarRating extends Component {
     minRating: 0,
     maxRating: 10,
     rating: 5,
-    starRatio: 2
+    starRatio: 2,
+    limit: 1000
   }
 
   componentWillMount() {
-    let { rating, minRating, maxRating, starRatio } = this.props
-    if (!inputIsValid(rating, minRating, maxRating, starRatio)) {
+    let { rating, minRating, maxRating, starRatio, limit } = this.props
+    if (!inputIsValid(rating, minRating, maxRating, starRatio, limit)) {
       throw new Error(`Rating must be between ${minRating} and ${maxRating} (${rating}).`)
     }
   }

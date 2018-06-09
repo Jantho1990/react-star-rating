@@ -10,7 +10,8 @@ export default class RatingInputs extends Component {
     minRating: 0,
     maxRating: 10,
     rating: 5,
-    starRatio: 2
+    starRatio: 2,
+    limit: 1000
   }
 
   handleRating () {
@@ -19,7 +20,7 @@ export default class RatingInputs extends Component {
     let maxRating = Number(this.refs.maxRating.value)
     let starRatio = Number(this.refs.starRatio.value)
 
-    if (inputIsValid(rating, minRating, maxRating, starRatio)) {
+    if (inputIsValid(rating, minRating, maxRating, starRatio, this.props.limit)) {
       this.props.onStarRatingsUpdate({
         rating,
         minRating,
@@ -36,11 +37,11 @@ export default class RatingInputs extends Component {
         <label htmlFor="rating">Rating</label>
         <input type="number" ref="rating" name="rating" value={rating} min={minRating} max={maxRating} onChange={this.handleRating}/>
         <label htmlFor="minRating">Min Rating</label>
-        <input type="number" ref="minRating" name="minRating" value={minRating} onChange={this.handleRating}/>
+        <input type="number" ref="minRating" name="minRating" value={minRating} min="0" max="1000" onChange={this.handleRating}/>
         <label htmlFor="maxRating">Max Rating</label>
-        <input type="number" ref="maxRating" name="maxRating" value={maxRating} onChange={this.handleRating}/>
+        <input type="number" ref="maxRating" name="maxRating" value={maxRating} min="0" max="1000" onChange={this.handleRating}/>
         <label htmlFor="starRatio">Star Ratio</label>
-        <input type="number" ref="starRatio" name="starRatio" value={starRatio} onChange={this.handleRating}/>
+        <input type="number" ref="starRatio" name="starRatio" value={starRatio} min="0" max="1000" onChange={this.handleRating}/>
       </div>
     )
   }
