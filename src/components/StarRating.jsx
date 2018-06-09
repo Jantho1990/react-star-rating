@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ratingIsValid } from '../lib/lib'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export default class StarRating extends Component {
@@ -10,15 +11,12 @@ export default class StarRating extends Component {
   }
 
   componentWillMount() {
-    this.ratingIsValid()
-  }
-
-  componentWillUpdate() {
-    this.ratingIsValid()
-  }
-
-  componentWillReceiveProps() {
-    this.ratingIsValid()
+    let { rating, minRating, maxRating } = this.props
+    if (!ratingIsValid(rating, minRating, maxRating)) {
+      throw new Error(
+        `Rating must be between ${minRating} and ${maxRating} (${rating}).`
+      )
+    }
   }
 
   fullStars() {
@@ -44,23 +42,6 @@ export default class StarRating extends Component {
   maxStars() {
     let { maxRating, starRatio } = this.props
     return Math.floor(maxRating / starRatio)
-  }
-
-  ratingIsValid() {
-    let { rating, minRating, maxRating } = this.props
-    
-    if (rating >= minRating && rating <= maxRating) {
-      console.log('snap')
-      return true
-    }
-    console.log(rating >= minRating && rating <= maxRating)
-    console.log(`${rating} >= ${minRating}`, rating >= minRating,
-                `${rating} <= ${maxRating}`, rating <= maxRating)
-    console.log(typeof rating, typeof minRating, typeof maxRating)
-
-    throw new Error(
-      `Rating must be between ${minRating} and ${maxRating} (${rating}).`
-    )
   }
 
   render() {

@@ -29,6 +29,7 @@ class App extends Component {
       ...data
     })
   }
+  
   render() {
     let {rating, minRating, maxRating, starRatio} = this.state
     return (
