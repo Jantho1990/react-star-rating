@@ -25,13 +25,8 @@ export let valuesLessThanHardLimit = function(limit, ...values) {
   return values.length === filteredValues.length
 }
 
-export let eachIsNotNull = function (...values) {
-  return values.filter(value => value === null).length === 0
-}
-
 export default function (rating, minRating, maxRating, starRatio, limit) {
-  return eachIsNotNull(rating, minRating, maxRating, starRatio, limit)
-    && valuesLessThanHardLimit(limit, minRating, maxRating) 
+  return valuesLessThanHardLimit(limit, minRating, maxRating) 
     && valuesNotNegative(rating, minRating, maxRating)
     && valuesNotZeroOrLess(starRatio)
     && minLessThanMax(minRating, maxRating)
