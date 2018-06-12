@@ -1,12 +1,12 @@
-# React StarRating
+# React Star-Rating
 
 This is a sample React project, built around a StarRating component which displays stars and half-stars based on the inputs you give it, similar to what you might see on Amazon or other ecommerce websites.
 
 ## Install
 ```
 git clone https://github.com/Jantho1990/react-star-rating.git react-star-rating
-npm install
 cd react-star-rating
+npm install
 npm start
 ```
 
