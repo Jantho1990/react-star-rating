@@ -2,10 +2,14 @@ import React, { Component } from 'react'
 import inputIsValid from '../lib/validate'
 
 export default class RatingInputs extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.handleRating =  this.handleRating.bind(this)
+    this.state = {
+      ...props
+    }
   }
+
   static defaultProps = {
     minRating: 0,
     maxRating: 10,
@@ -14,12 +18,28 @@ export default class RatingInputs extends Component {
     limit: 1000
   }
 
-  handleRating () {
-    let rating = Number(this.refs.rating.value)
-    let minRating = Number(this.refs.minRating.value)
-    let maxRating = Number(this.refs.maxRating.value)
-    let starRatio = Number(this.refs.starRatio.value)
+  anyAreEmpty(...values) {
+    return values.filter(value => value === "").length > 0
+  }
 
+  handleRating () {
+    let rating = this.refs.rating.value
+    let minRating = this.refs.minRating.value
+    let maxRating = this.refs.maxRating.value
+    let starRatio = this.refs.starRatio.value
+    
+    this.setState({
+      ...this.state,
+      rating,
+      minRating,
+      maxRating,
+      starRatio
+    })
+
+    if (this.anyAreEmpty(rating, minRating, maxRating, starRatio)) return
+
+    [rating, minRating, maxRating, starRatio] = [rating, minRating, maxRating, starRatio].map(value => Number(value))
+    
     if (inputIsValid(rating, minRating, maxRating, starRatio, this.props.limit)) {
       this.props.onStarRatingsUpdate({
         rating,
@@ -31,7 +51,7 @@ export default class RatingInputs extends Component {
   }
 
   render () {
-    let { rating, minRating, maxRating, starRatio } = this.props
+    let { rating, minRating, maxRating, starRatio } = this.state
     return (
       <div className="rating-inputs">
         <label htmlFor="rating">Rating</label>
