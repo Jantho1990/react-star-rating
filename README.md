@@ -4,8 +4,9 @@ This is a sample React project, built around a StarRating component which displa
 
 ## Install
 ```
-git clone https://github.com/Jantho1990/react-star-rating.git
+git clone https://github.com/Jantho1990/react-star-rating.git react-star-rating
 npm install
+cd react-star-rating
 npm start
 ```
 
